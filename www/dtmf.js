@@ -34,9 +34,9 @@ function DTMF(){
  * @param {Function} successCallback The function to call when the heading data is available
  * @param {Function} errorCallback The function to call when there is an error getting the heading data. (OPTIONAL)
  */
-DTMF.prototype.setDTMF = function(successCallback, errorCallback, tone) {
+DTMF.prototype.setDTMF = function(successCallback, errorCallback, tone, duration) {
     argscheck.checkArgs('fF', 'DTMF.setDTMF', arguments);
-    exec(successCallback, errorCallback, "DTMF", "setDTMF", [tone]);
+    exec(successCallback, errorCallback, "DTMF", "setDTMF", [tone, duration]);
 };
 
 module.exports = new DTMF();
