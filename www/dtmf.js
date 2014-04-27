@@ -24,6 +24,9 @@ var argscheck = require('cordova/argscheck'),
     exec = require('cordova/exec'),
     cordova = require('cordova');
 
+function DTMF(){
+
+}
 
 /**
  * Set DTMF

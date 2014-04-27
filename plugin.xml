@@ -29,8 +29,8 @@
     <repo>https://github.com/vzaramel/cordova-plugin-dtmf.git</repo>
     <issue>https://github.com/vzaramel/cordova-plugin-dtmf/issues</issue>
 
-    <js-module src="www/dtmf.js" name="dtmf">
-        <clobbers target="dtmf" />
+    <js-module src="www/dtmf.js" name="DTMF">
+        <clobbers target="DTMF" />
     </js-module>
 
 
