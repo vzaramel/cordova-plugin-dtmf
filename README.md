@@ -17,6 +17,6 @@
          under the License.
 -->
 
-# org.apache.cordova.device
+# org.apache.cordova.dtmf
 
 Plugin documentation: [doc/index.md](doc/index.md)
