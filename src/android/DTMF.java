@@ -63,16 +63,18 @@ public class DTMF extends CordovaPlugin {
      * @return                  True if the action was valid, false if not.
      */
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        final JSONObject contact = args.getJSONObject(0);
-        this.cordova.getThreadPool().execute(new Runnable() {
-            public void run() {
-                JSONObject res = null;
-                res = new JSONObject();
-                setDTMF(contact);
-                callbackContext.success(res);
-            }
-        });
-        return true;
+        if( action.Equals("setDTMF") )
+        {
+            this.cordova.getThreadPool().execute(new Runnable() {
+                public void run() {
+                    res = new JSONObject();
+                    setDTMF(args.getLong(0));
+                    callbackContext.success();
+                }
+            });
+            return true;
+        }
+        return false;
     }
 
     //--------------------------------------------------------------------------
