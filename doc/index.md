@@ -25,7 +25,24 @@
 
 ## Properties
 
-- DTMF.setDTMF(succesCallBack, errorCallBack, int tone, int duration)
+- DTMF.startTone(succesCallBack, errorCallBack, int tone, int duration)
+tone:
+ - DTMF.TONE__0 = 0;
+ - DTMF.TONE_1 = 1;
+ - DTMF.TONE_2 = 2;
+ - DTMF.TONE_3 = 3;
+ - DTMF.TONE_4 = 4;
+ - DTMF.TONE_5 = 5;
+ - DTMF.TONE_6 = 6;
+ - DTMF.TONE_7 = 7;
+ - DTMF.TONE_8 = 8;
+ - DTMF.TONE_9 = 9;
+ - DTMF.TONE_A = 12;
+ - DTMF.TONE_B = 13;
+ - DTMF.TONE_C = 14;
+ - DTMF.TONE_D = 15;
+ - DTMF.TONE_P = 11;
+ - DTMF.TONE_S = 10;
 
 ### Supported Platforms
 
