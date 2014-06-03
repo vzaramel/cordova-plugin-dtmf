@@ -39,22 +39,22 @@ DTMF.prototype.startTone = function(successCallback, errorCallback, tone, durati
     exec(successCallback, errorCallback, "DTMF", "startTone", [tone, duration]);
 };
 
-DTMF.prototype.TONE_DTMF_0 = 0;
-DTMF.prototype.TONE_DTMF_1 = 1;
-DTMF.prototype.TONE_DTMF_2 = 2;
-DTMF.prototype.TONE_DTMF_3 = 3;
-DTMF.prototype.TONE_DTMF_4 = 4;
-DTMF.prototype.TONE_DTMF_5 = 5;
-DTMF.prototype.TONE_DTMF_6 = 6;
-DTMF.prototype.TONE_DTMF_7 = 7;
-DTMF.prototype.TONE_DTMF_8 = 8;
-DTMF.prototype.TONE_DTMF_9 = 9;
-DTMF.prototype.TONE_DTMF_A = 12;
-DTMF.prototype.TONE_DTMF_B = 13;
-DTMF.prototype.TONE_DTMF_C = 14;
-DTMF.prototype.TONE_DTMF_D = 15;
-DTMF.prototype.TONE_DTMF_P = 11;
-DTMF.prototype.TONE_DTMF_S = 10;
+DTMF.prototype.TONE_0 = 0;
+DTMF.prototype.TONE_1 = 1;
+DTMF.prototype.TONE_2 = 2;
+DTMF.prototype.TONE_3 = 3;
+DTMF.prototype.TONE_4 = 4;
+DTMF.prototype.TONE_5 = 5;
+DTMF.prototype.TONE_6 = 6;
+DTMF.prototype.TONE_7 = 7;
+DTMF.prototype.TONE_8 = 8;
+DTMF.prototype.TONE_9 = 9;
+DTMF.prototype.TONE_A = 12;
+DTMF.prototype.TONE_B = 13;
+DTMF.prototype.TONE_C = 14;
+DTMF.prototype.TONE_D = 15;
+DTMF.prototype.TONE_P = 11;
+DTMF.prototype.TONE_S = 10;
 
 
 module.exports = new DTMF();
