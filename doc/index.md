@@ -27,22 +27,22 @@
 
 - DTMF.startTone(succesCallBack, errorCallBack, int tone, int duration)
 tone:
- - DTMF.TONE__0 = 0;
- - DTMF.TONE_1 = 1;
- - DTMF.TONE_2 = 2;
- - DTMF.TONE_3 = 3;
- - DTMF.TONE_4 = 4;
- - DTMF.TONE_5 = 5;
- - DTMF.TONE_6 = 6;
- - DTMF.TONE_7 = 7;
- - DTMF.TONE_8 = 8;
- - DTMF.TONE_9 = 9;
- - DTMF.TONE_A = 12;
- - DTMF.TONE_B = 13;
- - DTMF.TONE_C = 14;
- - DTMF.TONE_D = 15;
- - DTMF.TONE_P = 11;
- - DTMF.TONE_S = 10;
+ - DTMF.TONE_0
+ - DTMF.TONE_1
+ - DTMF.TONE_2
+ - DTMF.TONE_3
+ - DTMF.TONE_4
+ - DTMF.TONE_5
+ - DTMF.TONE_6
+ - DTMF.TONE_7
+ - DTMF.TONE_8
+ - DTMF.TONE_9
+ - DTMF.TONE_A
+ - DTMF.TONE_B;
+ - DTMF.TONE_C
+ - DTMF.TONE_D
+ - DTMF.TONE_P
+ - DTMF.TONE_S
 
 ### Supported Platforms
 
