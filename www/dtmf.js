@@ -29,14 +29,32 @@ function DTMF(){
 }
 
 /**
- * Set DTMF
+ * Start tone
  *
  * @param {Function} successCallback The function to call when the heading data is available
  * @param {Function} errorCallback The function to call when there is an error getting the heading data. (OPTIONAL)
  */
-DTMF.prototype.setDTMF = function(successCallback, errorCallback, tone, duration) {
+DTMF.prototype.startTone = function(successCallback, errorCallback, tone, duration) {
     argscheck.checkArgs('fF', 'DTMF.setDTMF', arguments);
-    exec(successCallback, errorCallback, "DTMF", "setDTMF", [tone, duration]);
+    exec(successCallback, errorCallback, "DTMF", "startTone", [tone, duration]);
 };
+
+DTMF.prototype.TONE_DTMF_0 = 0;
+DTMF.prototype.TONE_DTMF_1 = 1;
+DTMF.prototype.TONE_DTMF_2 = 2;
+DTMF.prototype.TONE_DTMF_3 = 3;
+DTMF.prototype.TONE_DTMF_4 = 4;
+DTMF.prototype.TONE_DTMF_5 = 5;
+DTMF.prototype.TONE_DTMF_6 = 6;
+DTMF.prototype.TONE_DTMF_7 = 7;
+DTMF.prototype.TONE_DTMF_8 = 8;
+DTMF.prototype.TONE_DTMF_9 = 9;
+DTMF.prototype.TONE_DTMF_A = 12;
+DTMF.prototype.TONE_DTMF_B = 13;
+DTMF.prototype.TONE_DTMF_C = 14;
+DTMF.prototype.TONE_DTMF_D = 15;
+DTMF.prototype.TONE_DTMF_P = 11;
+DTMF.prototype.TONE_DTMF_S = 10;
+
 
 module.exports = new DTMF();
