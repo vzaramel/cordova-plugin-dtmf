@@ -25,10 +25,8 @@ import org.apache.cordova.CordovaWebView;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import android.content.Context;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
-import android.util.Log;
 
 public class DTMF extends CordovaPlugin {
     
@@ -39,12 +37,16 @@ public class DTMF extends CordovaPlugin {
     
     private ToneGenerator toneGenerator;
     
+    /**
+     *  The DTMF tone volume relative to other sounds in the stream
+     *  {@link} https://android.googlesource.com/platform/packages/apps/Contacts/+/donut-release/src/com/android/contacts/TwelveKeyDialer.java#82
+     **/
+    private static final int TONE_RELATIVE_VOLUME = 50;
+    
     @Override
     public void initialize(CordovaInterface cordova, final CordovaWebView webView) {
       super.initialize(cordova, webView);
-      AudioManager audio = (AudioManager) cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
-      int volume = audio.getStreamVolume(AudioManager.STREAM_MUSIC);
-      toneGenerator = new ToneGenerator(AudioManager.STREAM_DTMF, volume);
+      toneGenerator = new ToneGenerator(AudioManager.STREAM_DTMF, TONE_RELATIVE_VOLUME);
     }
     
     @Override
