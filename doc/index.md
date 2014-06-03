@@ -26,7 +26,8 @@
 ## Properties
 
 - DTMF.startTone(succesCallBack, errorCallBack, int tone, int duration)
-tone:
+
+available tones are listed below:
  - DTMF.TONE_0
  - DTMF.TONE_1
  - DTMF.TONE_2
