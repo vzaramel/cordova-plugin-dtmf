@@ -18,19 +18,17 @@
  */
 package org.apache.cordova.dtmf;
 
-import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
-import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
-
-import android.media.AudioManager;
-import android.media.ToneGenerator;
-
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaWebView;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import android.provider.Settings;
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
+import android.util.Log;
 
 public class DTMF extends CordovaPlugin {
     
@@ -44,9 +42,9 @@ public class DTMF extends CordovaPlugin {
     @Override
     public void initialize(CordovaInterface cordova, final CordovaWebView webView) {
       super.initialize(cordova, webView);
-      AudioManager audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-      int volume = audio.getStreamVolume(AudioManager.STREAM_DTMF);
-      toneGenerator = new ToneGenerator(AudioManager.STREAM_DTMF, ToneGenerator.MAX_VOLUME);
+      AudioManager audio = (AudioManager) cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
+      int volume = audio.getStreamVolume(AudioManager.STREAM_MUSIC);
+      toneGenerator = new ToneGenerator(AudioManager.STREAM_DTMF, volume);
     }
     
     @Override
@@ -70,7 +68,7 @@ public class DTMF extends CordovaPlugin {
         } catch (Exception e) {
           return false;
         };
-        switch( action ) {
+        switch( method ) {
         case startTone:
           this.startTone(args, callbackContext);
           break;
@@ -86,8 +84,9 @@ public class DTMF extends CordovaPlugin {
      * Get the OS name.
      *
      * @return
+     * @throws JSONException 
      */
-    public void startTone(int tone, int duration) {
+    public void startTone(JSONArray args, final CallbackContext callbackContext) throws JSONException {
         final int tone = args.getInt(0);
         final int duration = args.getInt(1);
         this.cordova.getThreadPool().execute(new Runnable() {

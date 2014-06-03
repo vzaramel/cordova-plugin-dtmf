@@ -35,7 +35,7 @@ function DTMF(){
  * @param {Function} errorCallback The function to call when there is an error getting the heading data. (OPTIONAL)
  */
 DTMF.prototype.startTone = function(successCallback, errorCallback, tone, duration) {
-    argscheck.checkArgs('fF', 'DTMF.setDTMF', arguments);
+    argscheck.checkArgs('fF', 'DTMF.startTone', arguments);
     exec(successCallback, errorCallback, "DTMF", "startTone", [tone, duration]);
 };
 
