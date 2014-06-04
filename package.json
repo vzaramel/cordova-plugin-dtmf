@@ -1,9 +1,9 @@
 {
     "version": "1.0.0",
-    "name": "org.apache.cordova.dtmf",
+    "name": "vzaramel.cordova.dtmf",
     "cordova_name": "DTMF",
     "description": "Cordova DTMF Plugin",
-    "license": "Apache 2.0",
+    "license": "",
     "repo": "https://github.com/vzaramel/cordova-plugin-dtmf.git",
     "issue": "https://github.com/vzaramel/",
     "keywords": [
