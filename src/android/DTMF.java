@@ -18,28 +18,41 @@
  */
 package org.apache.cordova.dtmf;
 
-import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
-import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaWebView;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.provider.Settings;
-
 public class DTMF extends CordovaPlugin {
     
     public static final String TAG = "DTMF";
+    private enum METHODS {
+      startTone
+    }
     
     private ToneGenerator toneGenerator;
     
-    public DTMF(){
-        toneGenerator = new ToneGenerator(AudioManager.STREAM_DTMF,ToneGenerator.MAX_VOLUME);
+    /**
+     *  The DTMF tone volume relative to other sounds in the stream
+     *  {@link} https://android.googlesource.com/platform/packages/apps/Contacts/+/donut-release/src/com/android/contacts/TwelveKeyDialer.java#82
+     **/
+    private static final int TONE_RELATIVE_VOLUME = 50;
+    
+    @Override
+    public void initialize(CordovaInterface cordova, final CordovaWebView webView) {
+      super.initialize(cordova, webView);
+      toneGenerator = new ToneGenerator(AudioManager.STREAM_DTMF, TONE_RELATIVE_VOLUME);
+    }
+    
+    @Override
+    public void onDestroy() {
+      super.onDestroy();
+      toneGenerator.release();
     }
     
     /**
@@ -51,19 +64,18 @@ public class DTMF extends CordovaPlugin {
      * @return                  True if the action was valid, false if not.
      */
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
-        if( action.equals("setDTMF") )
-        {
-            final int tone = args.getInt(0);
-            final int duration = args.getInt(1);
-            this.cordova.getThreadPool().execute(new Runnable() {
-                public void run() {
-                    setDTMF(tone, duration);
-                    callbackContext.success();
-                }
-            });
-            return true;
+        METHODS method = null;
+        try {
+          method = METHODS.valueOf(action);
+        } catch (Exception e) {
+          return false;
+        };
+        switch( method ) {
+        case startTone:
+          this.startTone(args, callbackContext);
+          break;
         }
-        return false;
+        return true;
     }
     
     //--------------------------------------------------------------------------
@@ -74,9 +86,17 @@ public class DTMF extends CordovaPlugin {
      * Get the OS name.
      *
      * @return
+     * @throws JSONException 
      */
-    public void setDTMF(int tone, int duration) {
-        toneGenerator.startTone(tone, duration);
+    public void startTone(JSONArray args, final CallbackContext callbackContext) throws JSONException {
+        final int tone = args.getInt(0);
+        final int duration = args.getInt(1);
+        this.cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                toneGenerator.startTone(tone, duration);
+                callbackContext.success();
+            }
+        });
     }
     
 }
