@@ -24,7 +24,7 @@ public class DTMF extends CordovaPlugin {
      *  The DTMF tone volume relative to other sounds in the stream
      *  {@link} https://android.googlesource.com/platform/packages/apps/Contacts/+/donut-release/src/com/android/contacts/TwelveKeyDialer.java#82
      **/
-    private static final int TONE_RELATIVE_VOLUME = 50;
+    private static final int TONE_RELATIVE_VOLUME = 100;
     
     @Override
     public void initialize(CordovaInterface cordova, final CordovaWebView webView) {
